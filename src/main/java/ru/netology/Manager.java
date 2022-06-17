@@ -1,0 +1,45 @@
+package ru.netology;
+
+public class Manager {
+
+    private int limit = 10;
+
+    public Manager() {
+
+    }
+
+    public Manager(int newLimit) {
+        this.limit = newLimit;
+    }
+
+    private MoviesItem[] items = new MoviesItem[0];
+
+    public void add(MoviesItem item) {
+        int length = items.length + 1;
+        MoviesItem[] tmp = new MoviesItem[length];
+        System.arraycopy (items, 0, tmp, 0, items.length);
+        int lastIndex = tmp.length - 1;
+        tmp[lastIndex] = item;
+        items = tmp;
+    }
+
+    public MoviesItem[] findAll() {
+        return items;
+    }
+
+    public MoviesItem[] findLast() {
+        int resultLength;
+        if (limit < 10) {
+            resultLength = limit;
+        } else {
+            resultLength = 10;
+        }
+        MoviesItem[] result = new MoviesItem[resultLength];
+        for (int i = 0; i < resultLength; i++) {
+            int index = items.length - i - 1;
+            result[i] = items[index];
+        }
+        return result;
+    }
+    
+}
