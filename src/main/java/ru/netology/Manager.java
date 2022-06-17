@@ -41,5 +41,5 @@ public class Manager {
         }
         return result;
     }
-    
+
 }
