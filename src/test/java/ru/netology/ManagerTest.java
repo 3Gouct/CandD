@@ -35,7 +35,7 @@ public class ManagerTest {
 
     @Test
     void findLast() {
-        Manager manager = new Manager (3);
+        Manager manager = new Manager (4);
         manager.add (first);
         manager.add (second);
         manager.add (third);
@@ -44,7 +44,7 @@ public class ManagerTest {
         manager.add (sixth);
 
         MoviesItem[] actual = manager.findLast ();
-        MoviesItem[] expected = {sixth, fifth, fourth};
+        MoviesItem[] expected = {sixth, fifth, fourth, third};
 
         Assertions.assertArrayEquals (expected, actual);
     }

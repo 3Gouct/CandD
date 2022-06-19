@@ -3,13 +3,14 @@ package ru.netology;
 public class Manager {
 
     private int limit = 10;
+    private int newLimit;
 
     public Manager() {
 
     }
 
     public Manager(int newLimit) {
-        this.limit = newLimit;
+        this.newLimit = newLimit;
     }
 
     private MoviesItem[] items = new MoviesItem[0];
@@ -29,10 +30,10 @@ public class Manager {
 
     public MoviesItem[] findLast() {
         int resultLength;
-        if (limit < 10) {
-            resultLength = limit;
+        if (newLimit < limit) {
+            resultLength = newLimit;
         } else {
-            resultLength = 10;
+            resultLength = limit;
         }
         MoviesItem[] result = new MoviesItem[resultLength];
         for (int i = 0; i < resultLength; i++) {
