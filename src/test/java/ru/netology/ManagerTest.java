@@ -15,6 +15,7 @@ public class ManagerTest {
     MoviesItem eighth = new MoviesItem ("eighth");
     MoviesItem ninth = new MoviesItem ("ninth");
     MoviesItem tenth = new MoviesItem ("tenth");
+    MoviesItem eleventh = new MoviesItem ("eleventh");
 
     @Test
     void addMovie() {
@@ -34,7 +35,7 @@ public class ManagerTest {
     }
 
     @Test
-    void findLast() {
+    void lessLimitFindLast() {
         Manager manager = new Manager (4);
         manager.add (first);
         manager.add (second);
@@ -49,4 +50,44 @@ public class ManagerTest {
         Assertions.assertArrayEquals (expected, actual);
     }
 
+    @Test
+    void limitFindLast() {
+        Manager manager = new Manager (10);
+        manager.add (first);
+        manager.add (second);
+        manager.add (third);
+        manager.add (fourth);
+        manager.add (fifth);
+        manager.add (sixth);
+        manager.add (seventh);
+        manager.add (eighth);
+        manager.add (ninth);
+        manager.add (tenth);
+
+        MoviesItem[] actual = manager.findLast ();
+        MoviesItem[] expected = {tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
+
+        Assertions.assertArrayEquals (expected, actual);
+    }
+
+    @Test
+    void moreLimitFindLast() {
+        Manager manager = new Manager (11);
+        manager.add (first);
+        manager.add (second);
+        manager.add (third);
+        manager.add (fourth);
+        manager.add (fifth);
+        manager.add (sixth);
+        manager.add (seventh);
+        manager.add (eighth);
+        manager.add (ninth);
+        manager.add (tenth);
+        manager.add (eleventh);
+
+        MoviesItem[] actual = manager.findLast ();
+        MoviesItem[] expected = {eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second};
+
+        Assertions.assertArrayEquals (expected, actual);
+    }
 }
